@@ -28,6 +28,7 @@ Esta é a fundação para times de engenharia que desejam integrar IA em seu dia
 │   └── templates/           # Camada específica: configurações e templates a serem copiados para repositórios reais
 ├── workflows/               # Rotinas passo-a-passo e workflows de alto nível
 ├── templates/               # Artefatos canônicos da feature (SPEC, BDD, etc.)
+├── examples/                # Exemplos práticos e workflow enxuto para o dia a dia
 └── docs/                    # Documentação do próprio sistema operacional
 ```
 
@@ -93,7 +94,7 @@ graph TD
     D -- Não --> F{É mudança de infraestrutura?}
     F -- Sim --> G[Terraform Audit Workflow]
     F -- Não --> H{É ajuste fino/simples?}
-    H -- Sim --> I[Não precisa de fluxo completo, use Pair-Implement Skill]
+    H -- Sim --> I[Use o Fluxo Enxuto - veja examples/claude-copilot-workflow.md]
     H -- Não --> J[BDD e Test Plan isolados]
 
     C --> K(Criação de FEATURE_SPEC.md)
@@ -114,3 +115,16 @@ Se estiver lidando com um time que quer introduzir IA sem ser esmagado pela estr
 1. Comece apenas preenchendo as `.github/copilot-instructions.md` com os comandos essenciais.
 2. Use a skill de `unit-test-ts` / `unit-test-python` para solidificar qualidade.
 3. Não use a feature spec-driven completa no primeiro dia; faça os programadores se habituarem a pedir BDDs usando `bdd-scenario-authoring`.
+
+## 11. Fluxo Enxuto para o Dia a Dia
+
+Para tarefas pequenas a médias (bug fixes, features de 1-2 cenários, refactors, CRUD), use o **fluxo enxuto** documentado em [`examples/claude-copilot-workflow.md`](examples/claude-copilot-workflow.md).
+
+Ele cobre:
+- Setup do VSCode + Copilot com Claude
+- Matriz de modelo (Haiku/Sonnet/Opus) por tipo de tarefa
+- Templates de prompt copiáveis para cada situação
+- Heurística de decisão em 30 segundos
+- Anti-padrões a evitar
+
+Use o fluxo completo (seção 7) apenas quando a tarefa tocar múltiplos serviços, exigir alinhamento com stakeholders, ou envolver mudanças irreversíveis.
